@@ -24,5 +24,26 @@ int main() {
 		printf("Ne poluchilos zakrit fail\n");
 		exit(-1);
 	}
+
+
+
+	char resstring[14];
+	if((fd = open("wrfile.txt", O_RDONLY)) < 0) {
+		printf("Oshibka pri otkritii faila na chtenie'\n");
+		exit(-1);
+	}
+
+	size = read(fd, resstring, 14);
+	if(size != 14){
+		printf("Ne udalos prochitat 14 bait iz faila\n");
+		exit(-1);
+	}
+	else printf("Prochitannaya stroka %s\n", resstring);
+
+	if(close(fd) < 0) {
+		printf("Ne poluchilos zakrit fail\n");
+		exit(-1);
+	}
+
 	return 0;
 }
